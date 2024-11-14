@@ -313,7 +313,8 @@ def teaching_cycle(knowledge_point: str, knowledge_point_prompt: str, tutor: Tea
     print("Quiz generated.")
     
     print("\n👨‍🎓 Student attempting quiz...")
-    student_answers = simulate_student_response(client, quiz_content, lecture, cycle_log)
+    # student_answers = simulate_student_response(client, quiz_content, lecture, cycle_log)
+    student_answers = get_student_input(quiz_content, lecture, cycle_log)
     print("Student submitted answers.")
     
     print("\n📊 TA grading...")
@@ -378,10 +379,20 @@ def InLecture_block(chapter_df: pd.DataFrame, client: OpenAI, log_dir: str, main
                 print(log_message)
                 with open(main_log, 'a', encoding='utf-8') as f:
                     f.write(f"{log_message}\n")
+            # elif attempts < max_attempts:
+            #     #FRONTEND log_message
+            #     log_message = f"\n⚠️ Grade below 7/10. Retrying..."
+            #     print(log_message)
+            #     with open(main_log, 'a', encoding='utf-8') as f:
+            #         f.write(f"{log_message}\n")
+            #     time.sleep(2)
+            #     knowledge_point_prompt = grading_result.split('eedback')[-1]
             elif attempts < max_attempts:
-                #FRONTEND log_message
-                log_message = f"\n⚠️ Grade below 7/10. Retrying..."
+                log_message = f"\n⚠️ Grade below 7/10. Would you like to try again? (yes/no)"
                 print(log_message)
+                retry = input().lower()
+                if retry != 'yes':
+                    break
                 with open(main_log, 'a', encoding='utf-8') as f:
                     f.write(f"{log_message}\n")
                 time.sleep(2)
