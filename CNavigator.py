@@ -475,6 +475,7 @@ def main():
         # Process each chapter
         for chapter_name, chapter_df in df.groupby('Chapter',sort = False):
             
+            
             print(f"\n{'='*20} Chapter: {chapter_name} {'='*20}")
             
             # Step 1: Host introduces chapter
