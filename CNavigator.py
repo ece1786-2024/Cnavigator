@@ -8,7 +8,7 @@ import os
 from langchain_openai import ChatOpenAI
 from langchain_community.document_loaders.csv_loader import CSVLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_chroma import Chroma
+# from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
@@ -444,6 +444,7 @@ def main():
         df = pd.read_csv(file_path,encoding='utf-8-sig')
         loader = CSVLoader(file_path=file_path,encoding='utf-8-sig')
         data = loader.load()
+        # print(df)
 
 
             
@@ -472,7 +473,7 @@ def main():
             f.write("=" * 50 + "\n")
         
         # Process each chapter
-        for chapter_name, chapter_df in df.groupby('Chapter'):
+        for chapter_name, chapter_df in df.groupby('Chapter',sort=False):
             print(f"\n{'='*20} Chapter: {chapter_name} {'='*20}")
             
             # Step 1: Host introduces chapter
