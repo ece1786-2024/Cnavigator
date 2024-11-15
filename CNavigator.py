@@ -466,7 +466,6 @@ def main():
         # Create chapter-level agents
         #host, chapter_quiz, chapter_ta = create_chapter_agents(client, log_dir)
         host, chapter_quiz = create_chapter_agents(client, log_dir)
-        # print(1)
         
         with open(main_log, 'w', encoding='utf-8') as f:
             f.write("Teaching Session Started\n")
