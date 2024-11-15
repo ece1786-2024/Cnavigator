@@ -1,0 +1,1 @@
+[2024-11-15 18:21:44] ERROR: Error in teaching session: Error loading C_Variables_Knowledge_Points.csv
