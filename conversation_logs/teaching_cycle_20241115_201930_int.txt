@@ -1,0 +1,83 @@
+Teaching Cycle for: int
+==================================================
+
+LECTURE:
+Hello there! 😊 I'm excited to dive into the world of C programming with you today, specifically focusing on data types. Our spotlight will be on the `int` data type, which is essential for working with whole numbers in C.
+
+### What is an `int`?
+
+In simple terms, an `int` is a data type that stores integers—those are whole numbers without any decimal points. For example, you can have numbers like `123`, `-123`, or even `0`. The key thing to remember is that `int` does not deal with fractions or decimals; it keeps it nice and whole!
+
+### Storage of `int`
+
+Now, when we talk about storage, `int` typically uses 4 bytes (32 bits) of memory on many systems. This means it can hold a range of values. The exact range depends on whether the integer is signed or unsigned:
+
+- **Signed int**: Can hold both positive and negative numbers. The range is usually from -2,147,483,648 to 2,147,483,647.
+- **Unsigned int**: Can only hold non-negative numbers, effectively doubling the positive range. So it can hold values from 0 to 4,294,967,295.
+
+### Modifiers for `int`
+
+In addition to just `int`, C provides some modifiers that change how integers are stored:
+
+- **short int**: This is used for smaller numbers. It typically uses 2 bytes (16 bits) and can hold values from -32,768 to 32,767 (signed) or 0 to 65,535 (unsigned).
+- **long int**: This is for larger numbers. It usually uses 4 or 8 bytes, extending the range significantly.
+- **long long int**: When you need to store even bigger integers, you can use this type, which typically occupies 8 bytes (64 bits).
+
+### Code Example
+
+Let's illustrate this with a small piece of code:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a = 123;              // A regular integer
+    unsigned int b = 300000; // An unsigned integer
+    short int c = 32000;     // A short integer
+    long int d = 3000000000; // A long integer
+    long long int e = 9000000000000000000; // A long long integer
+
+    printf("Signed int: %d\n", a);
+    printf("Unsigned int: %u\n", b);
+    printf("Short int: %d\n", c);
+    printf("Long int: %ld\n", d);
+    printf("Long long int: %lld\n", e);
+
+    return 0;
+}
+```
+
+### Explanation of the Example
+
+In this code, we declare several variables of different integer types:
+
+1. `int a = 123;` - Here, `a` is a regular integer.
+2. `unsigned int b = 300000;` - `b` is an unsigned integer, meaning it can only be non-negative.
+3. `short int c = 32000;` - `c` is a short integer that can store smaller values.
+4. `long int d = 3000000000;` - `d` is a long integer for larger values.
+5. `long long int e = 9000000000000000000;` - `e` is a long long integer, which can handle even larger values.
+
+Then, we use `printf` to display these values on the console. Note how we use format specifiers like `%d`, `%u`, `%ld`, and `%lld` to correctly print the different types.
+
+### Any Questions?
+
+How are you feeling about `int` and its variations so far? Do you have any questions, or would you like more examples? I'm here to help! 😊
+
+QUIZ:
+Hello! 😊 I'm thrilled to help you test your understanding of the `int` data type and its variations in C programming. Let's get started with a quiz question!
+
+### Quiz Question: 
+
+Which of the following correctly declares a variable in C to store a large non-negative whole number larger than 3 billion?
+
+A) `int x = 4000000000;`
+
+B) `long long int x = 4000000000;`
+
+C) `unsigned int x = 4000000000;`
+
+D) `char x = 4000000000;`
+
+Correct Answer: B
+
+Please enter your answer by typing the letter of the option you choose (A, B, C, or D).
