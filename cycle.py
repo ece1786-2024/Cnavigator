@@ -12,7 +12,6 @@ def teaching_cycle(
     knowledge_point_prompt: str,
     tutor: TeachingAgent,
     quiz: TeachingAgent,
-    client: OpenAI,
     log_dir: str,
     retriever=None
 ) -> str:
