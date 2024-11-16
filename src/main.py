@@ -13,9 +13,21 @@ from src.utils.logger import create_log_directory, create_log_file, log_message
 from src.utils.helpers import create_chapter_agents, simulate_student_response
 from src.teaching.cycle import InLecture_block
 
+from langchain_openai import ChatOpenAI
+from langchain_community.document_loaders.csv_loader import CSVLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_openai import OpenAIEmbeddings
+from langchain.chains import create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_community.vectorstores import FAISS
+
 def main():
     # Create log directory
     log_dir = create_log_directory()
+    
+    os.environ["OPENAI_API_KEY"] = "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"
+    llm = ChatOpenAI(model="gpt-4o-mini")
     
     # Initialize OpenAI client
     client = OpenAI(api_key=OPENAI_API_KEY)
@@ -65,75 +77,42 @@ def main():
             print(syllabus)
             
             # Step 2: Run through all knowledge points
-            passed_points = InLecture_block(chapter_df, client, log_dir, main_log, retriever)
+            InLecture_block(chapter_df, client, log_dir, main_log, retriever)
             
-            if len(passed_points) > 0:
-                # Step 3: Chapter Quiz
-                print("\n📝 Generating Chapter Quiz...")
-                chapter_content = {
-                    'chapter': chapter_name,
-                    'knowledge_points': passed_points,
-                    'basic_content': chapter_df['Basic Content'].tolist(),
-                    'advanced_content': chapter_df['Advanced Content'].tolist()
-                }
-                chapter_quiz_content = chapter_quiz.get_response(
-                    f"Create a comprehensive chapter quiz based on: {json.dumps(chapter_content)}"
-                )
+            # Step 3: Chapter Quiz
+            chapter_content = {
+                'chapter': chapter_name,
+                'basic_content': chapter_df['Basic Content'].tolist(),
+                'advanced_content': chapter_df['Advanced Content'].tolist()
+            }
+            chapter_quiz_content = chapter_quiz.get_response(
+                f"Create a comprehensive chapter test based on: {json.dumps(chapter_content)}"
+            )
+            print(chapter_quiz_content)
+
+            # Step 4: Interactive quiz loop
+            while True:
+                coding_answer = input("type your answer: ")
+                with open(main_log, 'a', encoding='utf-8') as f:
+                    f.write(f"\nLECTURE:\n{chapter_quiz_content}\n")
                 
-                # Step 4: Student attempts chapter quiz
-                print("\n👨‍🎓 Student attempting chapter quiz...")
-                student_answers = simulate_student_response(
-                    client,
-                    chapter_quiz_content,
-                    syllabus,
-                    main_log
-                )
-                
-                # Step 5: Chapter Quiz evaluation
-                print("\n📊 Evaluating chapter mastery...")
-                evaluation_prompt = {
-                    'chapter': chapter_name,
-                    'quiz': chapter_quiz_content,
-                    'student_solution': student_answers,
-                    'covered_concepts': passed_points
-                }
-                
-                evaluation = chapter_quiz.get_response(
-                    f"Evaluate this chapter quiz solution: {json.dumps(evaluation_prompt)}"
-                )
-                
-                try:
-                    eval_data = json.loads(evaluation)
-                    print("\n=== Chapter Evaluation ===")
-                    
-                    if eval_data["score"]["total"] >= 70:
-                        print("✅ Chapter Mastered!")
-                        print(f"💪 {eval_data['encouragement']}")
-                    else:
-                        print("ℹ️ Additional Practice Recommended")
-                        print("\nRecommended Resources:")
-                        for doc in eval_data["resources"]["documentation"]:
-                            print(f"📚 {doc['topic']}: {doc['url']}")
-                        for tutorial in eval_data["resources"]["tutorials"]:
-                            print(f"📝 {tutorial['topic']}: {tutorial['url']}")
-                        for practice in eval_data["resources"]["practice"]:
-                            print(f"✍️ {practice['topic']}: {practice['url']}")
-                        print(f"\n💪 {eval_data['encouragement']}")
-                    
-                    print("\nNext Steps:")
-                    for step in eval_data["next_steps"]:
-                        print(f"➡️ {step}")
-                    
-                    with open(main_log, 'a', encoding='utf-8') as f:
-                        f.write(f"\nChapter {chapter_name} Evaluation:\n")
-                        f.write(json.dumps(eval_data, indent=2))
-                    
-                except json.JSONDecodeError:
-                    print("Evaluation completed. See logs for details.")
-            else:
-                print(f"\n⚠️ No topics were successfully completed in chapter {chapter_name}")
+                if coding_answer.lower() == "cccc":
+                    print("Loading next chapter......")
+                    break
+                else:
+                    # Step 5: Chapter QuizMaster evaluation
+                    answer = chapter_quiz.get_response(f"{coding_answer}")
+                    print(answer)
             
             print(f"\nCompleted Chapter: {chapter_name}\n")
+            
+            # Periodic summary and reset
+            summary = host.get_response("Please summarize our discussion so far.")
+            initial_host_character = """You are the Host in a C programming course. Your role is to introduce the course, motivate students by explaining the benefits of learning C at the first. When students give you a positive response, you should ask them whether they have C programming experience before. If they answer yes, you can ask whether they want to finish a question list in order to determine which level the student is. After each chapter, recognize their progress and encourage them to continue. Keep a friendly and supportive tone."""
+            host.clear_history()
+            host.add_to_history("system", initial_host_character)
+            host.add_to_history("system", f"Summary: {summary}")
+            
             time.sleep(WAIT_TIME)
             
     except Exception as e:

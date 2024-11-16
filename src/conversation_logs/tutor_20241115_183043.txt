@@ -1,4 +1,0 @@
-
-[2024-11-15 18:30:43] Professor Smith: Received prompt: Now, please explain this programming concept: Knowledge Point: int
-        Basic Content: Stores integers (whole numbers) without decimals, such as 123 or -123.
-        Advanced Content: In addition to storing integers, modifiers can change the storage range and sign of int, such as short int and long int for smaller or larger ranges, and unsigned int for non-negative integers, expanding positive range. Understand int storage length across systems (typically 32-bit) and the use of long long int for larger ranges.

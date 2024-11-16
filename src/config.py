@@ -9,7 +9,7 @@ MAX_TOKENS = 2000
 
 # File Paths
 LOG_DIR = "conversation_logs"
-CSV_FILE_PATH = 'C_Variables_Knowledge_Points.csv'
+CSV_FILE_PATH = './C_Variables_Knowledge_Points.csv'
 
 # Teaching Configuration
 MAX_ATTEMPTS = 3
