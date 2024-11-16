@@ -1,0 +1,88 @@
+Chapter,Question,Option A,Option B,Option C,Option D,Skip,Answer,,
+Experience,Have you studied C language?,"No, I have never studied C language.","Yes, but I have only learned a few concepts.","Yes, I have systematically studied C language.","Yes, I have studied C and have mature programming experience in it.",,,,
+C Introduction,Which of the following options correctly demonstrates the use of a statement and comment in C?,,"# This is a comment
+printf(""Hello, C language"");","/* Output a message */
+printf(""Hello, C language!"")","// Display output
+printf(""Hello, C!"");",,A,,
+Data Type,"Which of the following options correctly declares variables with data types int, float, and char in C?","int age = 25;
+float height = 5.9;
+char grade = 'A';","integer age = 25;
+decimal height = 5.9;
+character grade = 'A';","int age = ""25"";
+float height = ""5.9"";
+char grade = A;","int age = '25';
+float height = 5.9;
+char grade = ""A"";",,A,,
+Character Strings and Formatted Input and Output,Which function prints a string in C?,"printf(""Hello"");","input(""Hello"");","print(""Hello"");","strprint(""Hello"");",,A,,
+Operators,Which operator is used for remainder in C?,+,%,/,*,,B,,
+Looping,Which loop checks its condition after each iteration?,while,do while,for,while do,,B,,
+Branch and Jumps,"Which of the following code snippets correctly demonstrates conditional branching with the use of if, else if, else, and the break statement in C?","int x = 5;
+if (x > 0) {
+    printf(""Positive"");
+} else if (x == 0) {
+    printf(""Zero"");
+    break;
+} else {
+    printf(""Negative"");
+}","int x = 5;
+switch (x) {
+    case 1:
+        printf(""One"");
+        break;
+    case 5:
+        printf(""Five"");
+        else if (x > 0) {
+            printf(""Positive"");
+        }
+        break;
+    default:
+        printf(""Other"");
+}","int x = 5;
+if (x > 0) {
+    printf(""Positive"");
+} else if (x == 0) {
+    printf(""Zero"");
+} else {
+    printf(""Negative"");
+}","int x = 5;
+swith (x > 0) {
+    printf(""Positive"");
+} else {
+    continue;
+}",,C,,
+C?Functions,Which option correctly demonstrates a function with parameters in C?,"void greet() {
+    printf(""Hello!"");
+}","void greet(char name[]) {
+    printf(""Hello, %s!"", name);
+}","int sum() {
+    return 5 + 3;
+}","int number = 10;
+int getNumber() {
+    return number;
+}",,B,,
+Arrays and Pointers,Which option demonstrates accessing an array element using a pointer in C?,"int arr[3] = {10, 20, 30};
+int *p = arr;
+printf(""%d"", *p);","int arr[3] = {10, 20, 30};
+int *p = arr;
+printf(""%d"", *(p + 1));","int arr[3] = {10, 20, 30};
+printf(""%d"", arr[1]);","int arr[3] = {10, 20, 30};
+int *p = &arr[2];
+printf(""%d"", *p);",,B,,
+C Structures (structs),Which option demonstrates defining and accessing a C structure?,"struct Person {
+    char name[20];
+    int age;
+};
+struct Person p = {""Alice"", 25};
+printf(""%s is %d years old"", p.name, p.age);","struct Person {
+    char name[20];
+    int age;
+};
+struct Person p;
+printf(""%s"", p);","struct Person {
+    int age;
+};
+struct Person p = {""Bob""};","struct {
+    int x;
+    int y;
+};
+printf(""%d"", x);",,A,,

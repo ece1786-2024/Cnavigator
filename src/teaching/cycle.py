@@ -65,13 +65,19 @@ def InLecture_block(
     client: OpenAI,
     log_dir: str,
     main_log: str,
-    retriever=None
+    retriever=None,
+    unfamilar_list=[]
 ) -> List[str]:
     """Execute the lecture block for all knowledge points in a chapter"""
     tutor, quiz = create_agents(client, log_dir)
     
     for _, row in chapter_df.iterrows():
         knowledge_point = row['Knowledge Point']
+        
+        if knowledge_point not in unfamilar_list:
+            continue
+        
+        
         basic_content = row['Basic Content']
         advanced_content = row['Advanced Content']
         
