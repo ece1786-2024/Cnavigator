@@ -54,28 +54,49 @@ class TeachingAgent:
     def get_response_on_rag(self, input: str, retriever) -> str:
         try:
             self.add_to_history("user", input)
-        
-            from langchain_core.prompts import ChatPromptTemplate
-            from langchain.chains import create_retrieval_chain
-            from langchain.chains.combine_documents import create_stuff_documents_chain
-            from langchain_openai import ChatOpenAI
-
-            prompt = ChatPromptTemplate.from_messages([
-                ("system", self.character),
-                ("human", "{input}"),
-            ])
-            question_answer_chain = create_stuff_documents_chain(
-                ChatOpenAI(model="gpt-4o-mini"), 
-                prompt
-            )
-            rag_chain = create_retrieval_chain(retriever, question_answer_chain)
-            response = rag_chain.invoke({"input": input})['answer']
-
-            self.add_to_history("assistant", response)
-            return response
             
+            from src.rag.rag import get_rag_response
+            response = get_rag_response(
+                query=input,
+                retriever=retriever,
+                system_prompt=self.character
+            )
+            
+            if response:
+                self.add_to_history("assistant", response)
+                return response
+            return ""
+                
         except Exception as e:
             error_msg = f"Error getting response: {str(e)}"
             self.log_message(error_msg)
             print(error_msg)
             return ""
+    # def get_response_on_rag(self, input: str, retriever) -> str:
+    #     try:
+    #         self.add_to_history("user", input)
+        
+    #         from langchain_core.prompts import ChatPromptTemplate
+    #         from langchain.chains import create_retrieval_chain
+    #         from langchain.chains.combine_documents import create_stuff_documents_chain
+    #         from langchain_openai import ChatOpenAI
+
+    #         prompt = ChatPromptTemplate.from_messages([
+    #             ("system", self.character),
+    #             ("human", "{input}"),
+    #         ])
+    #         question_answer_chain = create_stuff_documents_chain(
+    #             ChatOpenAI(model="gpt-4o-mini"), 
+    #             prompt
+    #         )
+    #         rag_chain = create_retrieval_chain(retriever, question_answer_chain)
+    #         response = rag_chain.invoke({"input": input})['answer']
+
+    #         self.add_to_history("assistant", response)
+    #         return response
+            
+    #     except Exception as e:
+    #         error_msg = f"Error getting response: {str(e)}"
+    #         self.log_message(error_msg)
+    #         print(error_msg)
+    #         return ""
