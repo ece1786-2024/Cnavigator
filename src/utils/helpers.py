@@ -10,7 +10,7 @@ from src.agents.characters import (
     CHAPTER_QUIZ_CHARACTER
 )
 
-def create_agents(client: OpenAI, log_dir: str) -> Tuple[TeachingAgent, TeachingAgent]:
+def create_agents(client: OpenAI, log_dir: str, teaching_style: str) -> Tuple[TeachingAgent, TeachingAgent]:
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     tutor_log = os.path.join(log_dir, f"tutor_{timestamp}.txt")
     quiz_log = os.path.join(log_dir, f"quiz_{timestamp}.txt")
@@ -19,6 +19,7 @@ def create_agents(client: OpenAI, log_dir: str) -> Tuple[TeachingAgent, Teaching
         name="Professor Smith",
         role="tutor",
         character=TUTOR_CHARACTER,
+        teaching_style=teaching_style,
         client=client,
         log_file=tutor_log
     )
@@ -28,12 +29,13 @@ def create_agents(client: OpenAI, log_dir: str) -> Tuple[TeachingAgent, Teaching
         role="quiz",
         character=QUIZ_CHARACTER,
         client=client,
+        teaching_style=teaching_style,
         log_file=quiz_log
     )
     
     return tutor, quiz
 
-def create_chapter_agents(client: OpenAI, log_dir: str) -> Tuple[TeachingAgent, TeachingAgent]:
+def create_chapter_agents(client: OpenAI, log_dir: str, teaching_style: str) -> Tuple[TeachingAgent, TeachingAgent]:
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     host_log = os.path.join(log_dir, f"host_{timestamp}.txt")
     chapter_quiz_log = os.path.join(log_dir, f"chapter_quiz_{timestamp}.txt")
@@ -42,6 +44,7 @@ def create_chapter_agents(client: OpenAI, log_dir: str) -> Tuple[TeachingAgent, 
         name="Course Host",
         role="host",
         character=HOST_CHARACTER,
+        teaching_style=teaching_style,
         client=client,
         log_file=host_log
     )
@@ -51,6 +54,7 @@ def create_chapter_agents(client: OpenAI, log_dir: str) -> Tuple[TeachingAgent, 
         role="chapter_quiz",
         character=CHAPTER_QUIZ_CHARACTER,
         client=client,
+        teaching_style=teaching_style,
         log_file=chapter_quiz_log
     )
     

@@ -1,12 +1,14 @@
 from typing import List, Dict
 from datetime import datetime
 from openai import OpenAI
+from src.rag.rag import get_rag_response
 
 class TeachingAgent:
-    def __init__(self, name: str, role: str, character: str, client: OpenAI, log_file: str):
+    def __init__(self, name: str, role: str, character: str, client: OpenAI, log_file: str, teaching_style: str):
         self.name = name
         self.role = role
         self.character = character
+        self.teaching_style=teaching_style
         self.client = client
         self.conversation_history: List[Dict] = []
         self.log_file = log_file
@@ -31,7 +33,7 @@ class TeachingAgent:
         try:
             self.add_to_history("user", prompt)
             messages = [
-                {"role": "system", "content": self.character},
+                {"role": "system", "content": self.teaching_style + self.character},
                 *self.conversation_history
             ]
             
@@ -55,11 +57,11 @@ class TeachingAgent:
         try:
             self.add_to_history("user", input)
             
-            from src.rag.rag import get_rag_response
+            
             response = get_rag_response(
                 query=input,
                 retriever=retriever,
-                system_prompt=self.character
+                system_prompt=self.teaching_style + self.character
             )
             
             if response:

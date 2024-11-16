@@ -36,8 +36,13 @@ def main():
         df = pd.read_csv(CSV_FILE_PATH, encoding='utf-8-sig')
         retriever = langchain_service.create_retriever(data)
         
+        # ask students preference for teaching style:
+        print("\nWhat teaching style do you prefer? Please enter an adjective, such as 'humorous':")
+        teaching_style = "Your speaking style is "+input().lower()+". "
+        
+        
         # Create chapter-level agents
-        host, chapter_quiz = create_chapter_agents(client, log_dir)
+        host, chapter_quiz = create_chapter_agents(client, log_dir,teaching_style)
         
         with open(main_log, 'w', encoding='utf-8') as f:
             f.write("Teaching Session Started\n" + "=" * 50 + "\n")
@@ -91,7 +96,7 @@ def main():
                 print("\n📚 Chapter Syllabus:")
                 print(syllabus)
                 
-                InLecture_block(chapter_df, client, log_dir, main_log, retriever, unfamilar_list)
+                InLecture_block(chapter_df, client, log_dir, main_log, teaching_style, retriever, unfamilar_list)
                 
                 # Chapter Quiz
                 chapter_content = {

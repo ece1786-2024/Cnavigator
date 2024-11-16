@@ -1,7 +1,6 @@
 # src/teaching/cycle.py
 
 import time
-import json
 from typing import List
 import pandas as pd
 from openai import OpenAI
@@ -14,7 +13,6 @@ def teaching_cycle(
     knowledge_point_prompt: str,
     tutor: TeachingAgent,
     quiz: TeachingAgent,
-    client: OpenAI,
     log_dir: str,
     retriever=None
 ):
@@ -65,11 +63,12 @@ def InLecture_block(
     client: OpenAI,
     log_dir: str,
     main_log: str,
+    teaching_style: str,
     retriever=None,
     unfamilar_list=[]
 ) -> List[str]:
     """Execute the lecture block for all knowledge points in a chapter"""
-    tutor, quiz = create_agents(client, log_dir)
+    tutor, quiz = create_agents(client, log_dir,teaching_style)
     
     for _, row in chapter_df.iterrows():
         knowledge_point = row['Knowledge Point']
@@ -95,7 +94,6 @@ def InLecture_block(
             knowledge_point_prompt, 
             tutor, 
             quiz, 
-            client, 
             log_dir,
             retriever
         )
