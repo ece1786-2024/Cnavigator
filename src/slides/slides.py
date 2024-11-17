@@ -27,7 +27,7 @@ def generate_ppt_content(lecture_script):
     
     
     response = client.chat.completions.create(
-        model="gpt-4o-mini",  # Use the GPT-3.5 model or the latest model
+        model="gpt-4o-mini",  #gpt3.5 is too bad, but gpt4o is not good either.
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt},
