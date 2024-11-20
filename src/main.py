@@ -25,6 +25,16 @@ def main():
     main_log = create_log_file(log_dir, "main_log")
     
     try:
+        # ask students preference for teaching style:
+        print("Welcome to the CNavigator learning platform! We're here to help you master C programming, from basics to advanced levels. Let's begin this exciting journey together!")
+        print("\nWhat teaching style do you prefer? Please enter an adjective, such as 'humorous':")
+        teaching_style = "You should be "+input().lower()+" when you are teaching with the students."
+        
+        # Create chapter-level agents and provide the introduction to users
+        host, chapter_quiz = create_chapter_agents(client, log_dir, teaching_style)
+        formal_intro = host.get_response("Now a student just gets in the C programing course, please tell him how powerful C is, and why learning C is a good start.")
+        print(formal_intro)
+        
         # Initial test
         familar_list = init_test(file_path="ini_test.csv")
         
@@ -36,16 +46,10 @@ def main():
         df = pd.read_csv(CSV_FILE_PATH, encoding='utf-8-sig')
         retriever = langchain_service.create_retriever(data)
         
-        # ask students preference for teaching style:
-        print("\nWhat teaching style do you prefer? Please enter an adjective, such as 'humorous':")
-        teaching_style = "Your speaking style is "+input().lower()+". "
-        
-        
-        # Create chapter-level agents
-        host, chapter_quiz = create_chapter_agents(client, log_dir,teaching_style)
-        
         with open(main_log, 'w', encoding='utf-8') as f:
             f.write("Teaching Session Started\n" + "=" * 50 + "\n")
+            f.write(f"Teaching Style Chosen: {teaching_style}\n")
+            f.write(f"C Language Introduction Provided: {formal_intro}\n")
         
         # Process each chapter
         for chapter_name, chapter_df in df.groupby('Chapter', sort=False):
@@ -132,6 +136,8 @@ def main():
             host.add_to_history("system", f"Summary: {summary}")
             
             time.sleep(WAIT_TIME)
+        # Ending
+        host.get_response("Now that we have reached the end of this course, could you please provide a summary of the student's performance based on the conversation history? Additionally, suggest what they can do next to continue improving their skills in C programming.")
             
     except Exception as e:
         error_msg = f"Error in teaching session: {str(e)}"
