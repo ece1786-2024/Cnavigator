@@ -1,0 +1,17 @@
+name: Generate Structure
+on: [push]
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Generate Structure 
+        run: |
+          tree -a -I '.git' > STRUCTURE.md
+      - name: Commit
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add STRUCTURE.md
+          git commit -m "Update project structure" || exit 0
+          git push
