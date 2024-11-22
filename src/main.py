@@ -68,12 +68,15 @@ def main():
                 # Direct chapter test for familiar content
                 chapter_content = {
                     'chapter': chapter_name,
-                    'basic_content': chapter_df['Basic Content'].tolist(),
                     'advanced_content': chapter_df['Advanced Content'].tolist()
                 }
+                
+                df = pd.read_csv('coding_standard.csv')
+                coding_habit = df.to_string(index=False)
+                
                 chapter_quiz_content = chapter_quiz.get_response(
-                    f"Create a comprehensive chapter test based on: {json.dumps(chapter_content)}"
-                )
+                    f"Create a comprehensive chapter test based on: {json.dumps(chapter_content)}, and help the student follow these coding standards:{coding_habit} while they write their code.")
+ 
                 print(chapter_quiz_content)
                 
                 while True:
