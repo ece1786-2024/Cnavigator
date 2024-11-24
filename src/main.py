@@ -144,8 +144,9 @@ def main():
             
             time.sleep(WAIT_TIME)
         # Ending
-        host.get_response("Now that we have reached the end of this course, could you please provide a summary of the student's performance based on the conversation history? Additionally, suggest what they can do next to continue improving their skills in C programming.")
-            
+        conclusion = host.get_response("Now that we have reached the end of this course, could you please provide a summary of the student's performance based on the conversation history? Additionally, suggest what they can do next to continue improving their skills in C programming.")
+        print(conclusion) 
+        
     except Exception as e:
         error_msg = f"Error in teaching session: {str(e)}"
         print(error_msg)
