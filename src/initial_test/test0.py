@@ -22,7 +22,7 @@ def init_test(file_path = "ini_test.csv"):
     if student_response.upper()=='A':
         return df['Chapter'].tolist()[1:]
     
-    unfamilar_list=[]
+    familar_list=[]
     
     for index, row in df.iterrows():
         print("\nQuiz Content:")
@@ -36,10 +36,10 @@ def init_test(file_path = "ini_test.csv"):
         student_response = input()
         
         if student_response.upper()==row['Answer']:
-            unfamilar_list.append(row['Chapter'])
+            familar_list.append(row['Chapter'])
 
     # print(unfamilar_list)
-    return unfamilar_list
+    return familar_list
     
 def init_chapter_test(chapter_name,file_path = "chapter_test.csv"):
     
