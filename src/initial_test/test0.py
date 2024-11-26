@@ -1,70 +1,134 @@
 import pandas as pd
+import gradio as gr
 
-def init_test(file_path = "ini_test.csv"):
-    
+import pandas as pd
 
-    # print(file_path)
-    df = pd.read_csv(file_path, encoding='utf-8-sig')
-    # print(df)
-
-    #test if students have know something about C, if not, skip all following questions
-    print("\nQuiz Content:")
-    print("Chapter:", df.iloc[0]['Chapter'])
-    print("Question:", df.iloc[0]['Question'])
-    print("Option A:", df.iloc[0]['Option A'])
-    print("Option B:", df.iloc[0]['Option B'])
-    print("Option C:", df.iloc[0]['Option C'])
-    print("Option D:", df.iloc[0]['Option D'])
-    print("\nPlease enter your answer:")
-    student_response = input()
-
-    df=df.iloc[1:]    
-    if student_response.upper()=='A':
-        return df['Chapter'].tolist()[1:]
-    
-    familar_list=[]
-    
-    for index, row in df.iterrows():
-        print("\nQuiz Content:")
-        print("Chapter:", row['Chapter'])
-        print("Question:", row['Question'])
-        print("Option A:", row['Option A'])
-        print("Option B:", row['Option B'])
-        print("Option C:", row['Option C'])
-        print("Option D:", row['Option D'])
-        print("\nPlease enter your answer:")
-        student_response = input()
+class Tests:
+    def __init__(self, file_path="ini_test.csv"):
+        self.df = pd.read_csv(file_path, encoding='utf-8-sig')
+        self.familiar_chapters = []
+        self.selected_style = None
         
-        if student_response.upper()==row['Answer']:
-            familar_list.append(row['Chapter'])
-
-    # print(unfamilar_list)
-    return familar_list
+    def get_initial_question(self):
+        return {
+            'chapter': self.df.iloc[0]['Chapter'],
+            'question': self.df.iloc[0]['Question'],
+            'options': [
+                self.df.iloc[0]['Option A'],
+                self.df.iloc[0]['Option B'],
+                self.df.iloc[0]['Option C'],
+                self.df.iloc[0]['Option D']
+            ]
+        }
     
-def init_chapter_test(chapter_name,file_path = "chapter_test.csv"):
+    def get_remaining_questions(self):
+        questions = []
+        for _, row in self.df.iloc[1:].iterrows():
+            questions.append({
+                'chapter': row['Chapter'],
+                'question': row['Question'],
+                'options': [
+                    row['Option A'],
+                    row['Option B'],
+                    row['Option C'],
+                    row['Option D']
+                ],
+                'answer': row['Answer']
+            })
+        return questions
     
-
-    # print(file_path)
-    df = pd.read_csv(file_path, encoding='utf-8-sig')
-    
-    
-    unfamilar_list=[]
-    
-    for index, row in df.iterrows():
-        if chapter_name!=row['Chapter']:
-            continue
-        print("\nQuiz Content:")
-        print("Chapter:", row['Chapter'])
-        print("Question:", row['Question'])
-        print("Option A:", row['Option A'])
-        print("Option B:", row['Option B'])
-        print("Option C:", row['Option C'])
-        print("Option D:", row['Option D'])
-        print("\nPlease enter your answer:")
-        student_response = input()
+    def check_initial_answer(self, choice):
+        if not choice:
+            return False, None
+            
+        if choice == self.df.iloc[0]['Option A']:
+            chapters = self.df['Chapter'].tolist()[1:]
+            return True, chapters
+        return False, None
         
-        if student_response.upper()!=row['Answer']:
-            unfamilar_list.append(row['Knowledge Point'])
+    def check_answer(self, choice, question_idx):
+        if not choice:
+            return False
+            
+        row = self.df.iloc[question_idx + 1]
+        correct = choice == row[f'Option {row["Answer"]}']
+        if correct:
+            self.familiar_chapters.append(row['Chapter'])
+        return correct
+        
+    def set_teaching_style(self, style):
+        self.selected_style = f"Your speaking style is {style.lower()}."
+        return self.selected_style
+        
+    def get_results(self):
+        return self.familiar_chapters, self.selected_style or "No style selected"
+ 
 
-    # print(unfamilar_list)
-    return unfamilar_list
+
+class ChapterTest:
+    def __init__(self, file_path="chapter_test.csv"):
+        
+        self.df = pd.read_csv(file_path, encoding='utf-8-sig')
+        self.unfamiliar_points = []
+
+    def get_questions_for_chapter(self, chapter_name):
+        
+        questions = []
+        for _, row in self.df.iterrows():
+            if row['Chapter']!=chapter_name:
+                continue
+            questions.append({
+                'chapter': row['Chapter'],
+                'question': row['Question'],
+                'options': [
+                    row['Option A'],
+                    row['Option B'],
+                    row['Option C'],
+                    row['Option D']
+                ],
+                'answer': row['Answer']
+            })
+        return questions
+    
+    def check_answer(self, choice, question_idx):
+        if not choice:
+            return False
+            
+        row = self.df.iloc[question_idx]
+        correct = choice == row[f'Option {row["Answer"]}']
+        if not correct:
+            self.unfamiliar_points.append(row['Knowledge Point'])
+        return correct
+        
+        
+    def get_results(self):       
+        return self.unfamiliar_points
+
+    
+# def init_chapter_test(chapter_name,file_path = "chapter_test.csv"):
+    
+
+#     # print(file_path)
+#     df = pd.read_csv(file_path, encoding='utf-8-sig')
+    
+    
+#     unfamilar_list=[]
+    
+#     for index, row in df.iterrows():
+#         if chapter_name!=row['Chapter']:
+#             continue
+#         print("\nQuiz Content:")
+#         print("Chapter:", row['Chapter'])
+#         print("Question:", row['Question'])
+#         print("Option A:", row['Option A'])
+#         print("Option B:", row['Option B'])
+#         print("Option C:", row['Option C'])
+#         print("Option D:", row['Option D'])
+#         print("\nPlease enter your answer:")
+#         student_response = input()
+        
+#         if student_response.upper()!=row['Answer']:
+#             unfamilar_list.append(row['Knowledge Point'])
+
+#     # print(unfamilar_list)
+#     return unfamilar_list
