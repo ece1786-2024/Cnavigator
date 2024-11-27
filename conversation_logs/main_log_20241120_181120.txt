@@ -1,0 +1,179 @@
+Teaching Session Started
+==================================================
+Teaching Style Chosen: You should be humorous when you are teaching with the students.
+C Language Introduction Provided: Welcome aboard, future C programming maestro! 🎉
+
+Let me tell you something, C is like the Swiss Army knife of programming languages. It may look small and unassuming, but it can do anything from slicing through some system-level tasks to nurturing the most complex software applications—it's like the superman of programming languages! 🦸‍♂️
+
+Learning C is like learning how to ride a bike without training wheels; once you conquer it, you can take on any coding adventure! Why, you ask? Well, here are a few juicy tidbits:
+
+1. **Foundation for many languages**: Think of C as the Lego bricks of programming. Almost all modern languages, like C++, Python, Java, and even JavaScript, draw inspiration from its syntax and concepts. So if you learn C, you’ll have a glowing foundation upon which you can build anything!
+
+2. **Performance**: C gives you direct access to memory—like a VIP pass to your computer's innermost workings. This means you can whip up high-performance software that'll make your programs zoom faster than a caffeinated squirrel! 🐿️☕ 
+
+3. **Widely used**: From operating systems to embedded devices and even spacecraft software, C is everywhere! Learning it could lead you to build apps that literally fly to space (or at least make your toaster smarter)! 
+
+4. **Problem-solving skills**: Coding in C will give you the kind of logical thinking skills that can also help you solve tricky Sudoku puzzles or navigate your way through IKEA without losing your sanity. We all know that’s an achievement!
+
+5. **Great community**: The C community is like a big family reunion—everyone's happy to help, and there are tons of resources out there. If you have a question, *any* question at all, I promise someone, somewhere has already asked it (probably while trying to figure out if their computer just gave them an existential crisis).
+
+So, are we feeling excited about diving into this ocean of potential? ✈️💻 How about you? Do you have any prior experience with C programming, or are you a fresh sailor ready to set sail?
+
+=== Starting lesson for: int ===
+
+=== Starting lesson for: float ===
+
+=== Starting lesson for: char ===
+
+LECTURE:
+Hello there, future C programming wizard! 🌟 Are you ready to embark on an adventure through the world of data types? Grab your magic wand (or keyboard, it’s basically the same) and let’s dive into this comprehensive chapter test based on everything you’ve learned. 
+
+### C Programming Chapter Test: Data Types
+
+**Exercise 1: Missing Function Implementation**
+
+Here’s a code snippet where you’ll need to fill in the missing function. The goal is to implement a function that calculates the area of a rectangle using integer types.
+
+```c
+#include <stdio.h>
+
+// Function prototype
+int calculateArea(int width, int height);
+
+int main() {
+    int width, height;
+
+    // Example Input
+    printf("Enter the width of the rectangle: ");
+    scanf("%d", &width);
+    
+    printf("Enter the height of the rectangle: ");
+    scanf("%d", &height);
+
+    // Call the function to get the area
+    int area = calculateArea(width, height);
+    
+    // Output the result
+    printf("The area of the rectangle is: %d\n", area);
+    return 0;
+}
+
+// Fill in the function here
+```
+
+**Task**: Implement the `calculateArea` function that multiplies the `width` and `height` to return the area of the rectangle. 
+
+### Example
+If the input is:
+```
+Width: 5
+Height: 10
+```
+The expected output should be:
+```
+The area of the rectangle is: 50
+```
+
+Give it your best shot! If you need a hint, just let me know! 😊
+
+LECTURE:
+Hello there, future C programming wizard! 🌟 Are you ready to embark on an adventure through the world of data types? Grab your magic wand (or keyboard, it’s basically the same) and let’s dive into this comprehensive chapter test based on everything you’ve learned. 
+
+### C Programming Chapter Test: Data Types
+
+**Exercise 1: Missing Function Implementation**
+
+Here’s a code snippet where you’ll need to fill in the missing function. The goal is to implement a function that calculates the area of a rectangle using integer types.
+
+```c
+#include <stdio.h>
+
+// Function prototype
+int calculateArea(int width, int height);
+
+int main() {
+    int width, height;
+
+    // Example Input
+    printf("Enter the width of the rectangle: ");
+    scanf("%d", &width);
+    
+    printf("Enter the height of the rectangle: ");
+    scanf("%d", &height);
+
+    // Call the function to get the area
+    int area = calculateArea(width, height);
+    
+    // Output the result
+    printf("The area of the rectangle is: %d\n", area);
+    return 0;
+}
+
+// Fill in the function here
+```
+
+**Task**: Implement the `calculateArea` function that multiplies the `width` and `height` to return the area of the rectangle. 
+
+### Example
+If the input is:
+```
+Width: 5
+Height: 10
+```
+The expected output should be:
+```
+The area of the rectangle is: 50
+```
+
+Give it your best shot! If you need a hint, just let me know! 😊
+
+LECTURE:
+Hello there, future C programming wizard! 🌟 Are you ready to embark on an adventure through the world of data types? Grab your magic wand (or keyboard, it’s basically the same) and let’s dive into this comprehensive chapter test based on everything you’ve learned. 
+
+### C Programming Chapter Test: Data Types
+
+**Exercise 1: Missing Function Implementation**
+
+Here’s a code snippet where you’ll need to fill in the missing function. The goal is to implement a function that calculates the area of a rectangle using integer types.
+
+```c
+#include <stdio.h>
+
+// Function prototype
+int calculateArea(int width, int height);
+
+int main() {
+    int width, height;
+
+    // Example Input
+    printf("Enter the width of the rectangle: ");
+    scanf("%d", &width);
+    
+    printf("Enter the height of the rectangle: ");
+    scanf("%d", &height);
+
+    // Call the function to get the area
+    int area = calculateArea(width, height);
+    
+    // Output the result
+    printf("The area of the rectangle is: %d\n", area);
+    return 0;
+}
+
+// Fill in the function here
+```
+
+**Task**: Implement the `calculateArea` function that multiplies the `width` and `height` to return the area of the rectangle. 
+
+### Example
+If the input is:
+```
+Width: 5
+Height: 10
+```
+The expected output should be:
+```
+The area of the rectangle is: 50
+```
+
+Give it your best shot! If you need a hint, just let me know! 😊

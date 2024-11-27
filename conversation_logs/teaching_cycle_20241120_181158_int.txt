@@ -1,0 +1,128 @@
+Teaching Cycle for: int
+==================================================
+
+LECTURE:
+Hello there, future C programming superstar! 🌟 I hope you're ready to dive into the magical world of data types, because today we're going to talk about one of the most essential data types in C: the good ol' `int`. 
+
+So, what is an `int`? 🧐 Well, think of it as your trusty backpack that can only carry whole numbers—no fractions or decimals allowed! It's like a bouncer at a fancy club saying, "No entry for those who can't behave like a whole number!" 
+
+### Basic Content
+An `int` is designed to store integers (whole numbers), which can be positive, negative, or zero. For example, `123`, `-123`, and `0` are all valid integers that an `int` can hold. 
+
+### Code Example
+Here’s a simple example to illustrate how we use `int` in C:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int age = 25; // Storing a whole number
+    printf("My age is: %d\n", age);
+    return 0;
+}
+```
+
+#### Explanation
+In this example:
+
+1. We start with `#include <stdio.h>`, which is like telling the computer, "Hey! I want to do some printing, so bring in the printing experts!"
+
+2. Inside the `main` function, we declare an `int` variable called `age` and assign it the value `25`. 
+
+3. Finally, we use `printf` to print our age. The `%d` format specifier tells C, "Hey, I want to print an integer here."
+
+Pretty neat, right? 
+
+### Advanced Content
+Now, let’s get fancy with some modifiers! ✨ 
+
+1. **Modifiers**: You can change the storage range of an `int` using modifiers like `short int` and `long int`. 
+   - **short int**: Stores smaller integers, typically -32,768 to 32,767.
+   - **long int**: Can hold larger integers, often ranging from -2,147,483,648 to 2,147,483,647.
+
+2. **unsigned int**: This special type allows you to store only non-negative integers. So, instead of covering the negative side, you get a larger positive range. It’s like saying, “I don’t want the bad vibes of negative numbers!”
+
+3. **Storage Length**: Typically, an `int` is 32-bits across most systems, which means it can store a maximum of about 2 billion positive numbers. If you need to go bigger, you might want to consider `long long int`, which can store even larger numbers—up to about 9 quintillion! That’s like the number of grains of rice in a giant rice factory! 🌾
+
+### Wrap Up
+So, to recap, `int` is your go-to data type for whole numbers, and depending on your needs, you can modify its range with `short`, `long`, or even make it `unsigned` to kick negativity out of the party. 
+
+Do you have any questions about `int`, or would you like to see more examples? Feel free to ask! 🗣️
+
+QUIZ:
+Hello there, future C programming superstar! 🌟 Are you ready to flex those brain muscles and tackle some super fun quiz questions? Let’s see what you’ve got after our thrilling adventure into the world of `int` in C! 
+
+Here’s your first question:
+
+**Question 1:** What does the `int` data type in C primarily store?  
+A) Decimal numbers  
+B) Whole numbers  
+C) Characters  
+D) Strings  
+
+Take your time, and if you’re feeling a little unsure, just shout out for a hint! 😊 What’s your answer?
+
+QUIZ:
+Hello there, future C programming superstar! 🌟 Are you ready to flex those brain muscles and tackle some super fun quiz questions? Let’s see what you’ve got after our thrilling adventure into the world of `int` in C! 
+
+Here’s your first question:
+
+**Question 1:** What does the `int` data type in C primarily store?  
+A) Decimal numbers  
+B) Whole numbers  
+C) Characters  
+D) Strings  
+
+Take your time, and if you’re feeling a little unsure, just shout out for a hint! 😊 What’s your answer?
+
+QUIZ:
+Hello there, future C programming superstar! 🌟 Are you ready to flex those brain muscles and tackle some super fun quiz questions? Let’s see what you’ve got after our thrilling adventure into the world of `int` in C! 
+
+Here’s your first question:
+
+**Question 1:** What does the `int` data type in C primarily store?  
+A) Decimal numbers  
+B) Whole numbers  
+C) Characters  
+D) Strings  
+
+Take your time, and if you’re feeling a little unsure, just shout out for a hint! 😊 What’s your answer?
+
+QUIZ:
+Hello there, future C programming superstar! 🌟 Are you ready to flex those brain muscles and tackle some super fun quiz questions? Let’s see what you’ve got after our thrilling adventure into the world of `int` in C! 
+
+Here’s your first question:
+
+**Question 1:** What does the `int` data type in C primarily store?  
+A) Decimal numbers  
+B) Whole numbers  
+C) Characters  
+D) Strings  
+
+Take your time, and if you’re feeling a little unsure, just shout out for a hint! 😊 What’s your answer?
+
+QUIZ:
+Hello there, future C programming superstar! 🌟 Are you ready to flex those brain muscles and tackle some super fun quiz questions? Let’s see what you’ve got after our thrilling adventure into the world of `int` in C! 
+
+Here’s your first question:
+
+**Question 1:** What does the `int` data type in C primarily store?  
+A) Decimal numbers  
+B) Whole numbers  
+C) Characters  
+D) Strings  
+
+Take your time, and if you’re feeling a little unsure, just shout out for a hint! 😊 What’s your answer?
+
+QUIZ:
+Hello there, future C programming superstar! 🌟 Are you ready to flex those brain muscles and tackle some super fun quiz questions? Let’s see what you’ve got after our thrilling adventure into the world of `int` in C! 
+
+Here’s your first question:
+
+**Question 1:** What does the `int` data type in C primarily store?  
+A) Decimal numbers  
+B) Whole numbers  
+C) Characters  
+D) Strings  
+
+Take your time, and if you’re feeling a little unsure, just shout out for a hint! 😊 What’s your answer?

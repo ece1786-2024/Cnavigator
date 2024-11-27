@@ -1,0 +1,220 @@
+Teaching Cycle for: int
+==================================================
+
+LECTURE:
+Hello there! 😊 I'm excited to dive into the world of C programming with you today. Our topic is one of the fundamental concepts: **Data Types**, with a focus on the **int** type. 
+
+So, let's get started!
+
+### What is an `int`?
+
+In C, `int` is a data type used to store **integers**, which are whole numbers. This means you can store numbers like **123**, **-123**, or even **0**. However, you cannot store numbers with decimals, like **19.99**. 
+
+### Why Use `int`?
+
+Using `int` is essential when you need to perform calculations that involve whole numbers, such as counting items, indexing arrays, or working with loops. 
+
+### Modifiers for `int`
+
+Now, here's where it gets interesting! The basic `int` can be modified to change its storage capacity and whether it can hold negative values or not. Let's break this down:
+
+- **short int**: This type uses less memory, typically 16 bits, which means it can store smaller integers. It’s useful when you're sure your numbers won’t exceed that range.
+  
+- **long int**: This type uses more memory, usually 32 or 64 bits, allowing you to store much larger integers. You'd use this when you're working with numbers that might exceed the standard `int` range.
+
+- **unsigned int**: This type only stores non-negative integers (0 and positive numbers). By using `unsigned int`, you effectively double the maximum positive range of numbers you can store since it ignores the negative side.
+
+### Storage Length
+
+Typically, across most systems, an `int` is 32 bits, which means it can hold values from -2,147,483,648 to 2,147,483,647. However, this can vary based on the system architecture. If you need to store even larger integers, you can use `long long int`, which can hold even bigger values!
+
+### Example Code
+
+Here’s a simple example to illustrate:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a = 10;                  // a regular integer
+    unsigned int b = 20;        // a non-negative integer
+    short int c = 5;            // a smaller integer
+    long int d = 3000000000;    // a larger integer
+    long long int e = 9223372036854775807; // even larger integer
+
+    printf("Regular int: %d\n", a);
+    printf("Unsigned int: %u\n", b);
+    printf("Short int: %hd\n", c);
+    printf("Long int: %ld\n", d);
+    printf("Long long int: %lld\n", e);
+
+    return 0;
+}
+```
+
+### Explanation of the Code
+
+- We declare several types of integers: `int`, `unsigned int`, `short int`, `long int`, and `long long int`.
+- We then print each of these variables using the appropriate format specifiers (`%d` for `int`, `%u` for `unsigned int`, `%hd` for `short int`, `%ld` for `long int`, and `%lld` for `long long int`).
+- Each `printf` statement outputs the value of the corresponding variable to the console.
+
+### Questions?
+
+Do you have any questions about the `int` data type, or would you like more examples? I'm here to help! 😊
+
+LECTURE:
+Hello there! 😊 I'm excited to dive into the world of C programming with you today. Our topic is one of the fundamental concepts: **Data Types**, with a focus on the **int** type. 
+
+So, let's get started!
+
+### What is an `int`?
+
+In C, `int` is a data type used to store **integers**, which are whole numbers. This means you can store numbers like **123**, **-123**, or even **0**. However, you cannot store numbers with decimals, like **19.99**. 
+
+### Why Use `int`?
+
+Using `int` is essential when you need to perform calculations that involve whole numbers, such as counting items, indexing arrays, or working with loops. 
+
+### Modifiers for `int`
+
+Now, here's where it gets interesting! The basic `int` can be modified to change its storage capacity and whether it can hold negative values or not. Let's break this down:
+
+- **short int**: This type uses less memory, typically 16 bits, which means it can store smaller integers. It’s useful when you're sure your numbers won’t exceed that range.
+  
+- **long int**: This type uses more memory, usually 32 or 64 bits, allowing you to store much larger integers. You'd use this when you're working with numbers that might exceed the standard `int` range.
+
+- **unsigned int**: This type only stores non-negative integers (0 and positive numbers). By using `unsigned int`, you effectively double the maximum positive range of numbers you can store since it ignores the negative side.
+
+### Storage Length
+
+Typically, across most systems, an `int` is 32 bits, which means it can hold values from -2,147,483,648 to 2,147,483,647. However, this can vary based on the system architecture. If you need to store even larger integers, you can use `long long int`, which can hold even bigger values!
+
+### Example Code
+
+Here’s a simple example to illustrate:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a = 10;                  // a regular integer
+    unsigned int b = 20;        // a non-negative integer
+    short int c = 5;            // a smaller integer
+    long int d = 3000000000;    // a larger integer
+    long long int e = 9223372036854775807; // even larger integer
+
+    printf("Regular int: %d\n", a);
+    printf("Unsigned int: %u\n", b);
+    printf("Short int: %hd\n", c);
+    printf("Long int: %ld\n", d);
+    printf("Long long int: %lld\n", e);
+
+    return 0;
+}
+```
+
+### Explanation of the Code
+
+- We declare several types of integers: `int`, `unsigned int`, `short int`, `long int`, and `long long int`.
+- We then print each of these variables using the appropriate format specifiers (`%d` for `int`, `%u` for `unsigned int`, `%hd` for `short int`, `%ld` for `long int`, and `%lld` for `long long int`).
+- Each `printf` statement outputs the value of the corresponding variable to the console.
+
+### Questions?
+
+Do you have any questions about the `int` data type, or would you like more examples? I'm here to help! 😊
+
+QUIZ:
+Hello there! I'm so glad you're excited to dive into this wonderful world of C programming! 😄 Let's put your understanding of the `int` data type to the test with a fun quiz question. Ready? Here we go!
+
+**Question 1: What is the primary purpose of the `int` data type in C?**
+
+A) To store real numbers (numbers with decimals)  
+B) To store whole numbers (integers)  
+C) To store characters (letters)  
+D) To store strings (sequences of characters)  
+
+Take your time, and if you're unsure, just let me know, and I can give you a hint! Good luck! 🍀
+
+QUIZ:
+Hello there! I'm so glad you're excited to dive into this wonderful world of C programming! 😄 Let's put your understanding of the `int` data type to the test with a fun quiz question. Ready? Here we go!
+
+**Question 1: What is the primary purpose of the `int` data type in C?**
+
+A) To store real numbers (numbers with decimals)  
+B) To store whole numbers (integers)  
+C) To store characters (letters)  
+D) To store strings (sequences of characters)  
+
+Take your time, and if you're unsure, just let me know, and I can give you a hint! Good luck! 🍀
+
+QUIZ:
+Hello there! I'm so glad you're excited to dive into this wonderful world of C programming! 😄 Let's put your understanding of the `int` data type to the test with a fun quiz question. Ready? Here we go!
+
+**Question 1: What is the primary purpose of the `int` data type in C?**
+
+A) To store real numbers (numbers with decimals)  
+B) To store whole numbers (integers)  
+C) To store characters (letters)  
+D) To store strings (sequences of characters)  
+
+Take your time, and if you're unsure, just let me know, and I can give you a hint! Good luck! 🍀
+
+QUIZ:
+Hello there! I'm so glad you're excited to dive into this wonderful world of C programming! 😄 Let's put your understanding of the `int` data type to the test with a fun quiz question. Ready? Here we go!
+
+**Question 1: What is the primary purpose of the `int` data type in C?**
+
+A) To store real numbers (numbers with decimals)  
+B) To store whole numbers (integers)  
+C) To store characters (letters)  
+D) To store strings (sequences of characters)  
+
+Take your time, and if you're unsure, just let me know, and I can give you a hint! Good luck! 🍀
+
+QUIZ:
+Hello there! I'm so glad you're excited to dive into this wonderful world of C programming! 😄 Let's put your understanding of the `int` data type to the test with a fun quiz question. Ready? Here we go!
+
+**Question 1: What is the primary purpose of the `int` data type in C?**
+
+A) To store real numbers (numbers with decimals)  
+B) To store whole numbers (integers)  
+C) To store characters (letters)  
+D) To store strings (sequences of characters)  
+
+Take your time, and if you're unsure, just let me know, and I can give you a hint! Good luck! 🍀
+
+QUIZ:
+Hello there! I'm so glad you're excited to dive into this wonderful world of C programming! 😄 Let's put your understanding of the `int` data type to the test with a fun quiz question. Ready? Here we go!
+
+**Question 1: What is the primary purpose of the `int` data type in C?**
+
+A) To store real numbers (numbers with decimals)  
+B) To store whole numbers (integers)  
+C) To store characters (letters)  
+D) To store strings (sequences of characters)  
+
+Take your time, and if you're unsure, just let me know, and I can give you a hint! Good luck! 🍀
+
+QUIZ:
+Hello there! I'm so glad you're excited to dive into this wonderful world of C programming! 😄 Let's put your understanding of the `int` data type to the test with a fun quiz question. Ready? Here we go!
+
+**Question 1: What is the primary purpose of the `int` data type in C?**
+
+A) To store real numbers (numbers with decimals)  
+B) To store whole numbers (integers)  
+C) To store characters (letters)  
+D) To store strings (sequences of characters)  
+
+Take your time, and if you're unsure, just let me know, and I can give you a hint! Good luck! 🍀
+
+QUIZ:
+Hello there! I'm so glad you're excited to dive into this wonderful world of C programming! 😄 Let's put your understanding of the `int` data type to the test with a fun quiz question. Ready? Here we go!
+
+**Question 1: What is the primary purpose of the `int` data type in C?**
+
+A) To store real numbers (numbers with decimals)  
+B) To store whole numbers (integers)  
+C) To store characters (letters)  
+D) To store strings (sequences of characters)  
+
+Take your time, and if you're unsure, just let me know, and I can give you a hint! Good luck! 🍀
