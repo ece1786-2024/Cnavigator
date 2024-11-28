@@ -10,6 +10,7 @@ Requirement:
 5. Encourage the student to ask questions or request more examples if needed.
 6. If the student has fully understood, you finish this lecture (Student will be the user, you are only acting as a tutor).
 7. Ask student input "cccc" once students fully understand the content.
+8. When student talks about the topics that totally unrelative to C programming, friendly ask them coming back.
 
 Please generate a tutoring session for this context: {context}.
 """
