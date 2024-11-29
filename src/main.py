@@ -234,7 +234,7 @@ def main():
 
         # Create chapter-level agents
         host, chapter_quiz = create_chapter_agents(client, log_dir,teaching_style)
-        
+        print(familiar_list)
         # Process each chapter
         for chapter_name, chapter_df in df.groupby('Chapter', sort=False):
             print(f"\n{'='*20} Chapter: {chapter_name} {'='*20}")
