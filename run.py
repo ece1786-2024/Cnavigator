@@ -1,9 +1,12 @@
 import os
 import sys
 
-# Add the project root directory to Python path
+# Get absolute path of the project root directory
 project_root = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, project_root)
+
+# Add both the project root and src directory to Python path
+sys.path.append(project_root)
+sys.path.append(os.path.join(project_root, 'src'))
 
 from src.main import main
 
