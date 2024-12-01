@@ -294,13 +294,13 @@ def main():
                 # Full chapter process for unfamiliar content
                 chapter_info = {
                     'name': chapter_name,
-                    'basic_content': chapter_df['Basic Content'].tolist(),
+                    # 'basic_content': chapter_df['Basic Content'].tolist(),
                     'advanced_content': chapter_df['Advanced Content'].tolist()
                 }
                 # Full chapter process for unfamiliar content
                 chapter_info = {
                     'name': chapter_name,
-                    'basic_content': chapter_df['Basic Content'].tolist(),
+                    # 'basic_content': chapter_df['Basic Content'].tolist(),
                     'advanced_content': chapter_df['Advanced Content'].tolist()
                 }
 
