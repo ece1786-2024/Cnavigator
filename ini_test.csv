@@ -16,7 +16,7 @@ char grade = ""A"";",,A,,
 Character Strings and Formatted Input and Output,Which function prints a string in C?,"printf(""Hello"");","input(""Hello"");","print(""Hello"");","strprint(""Hello"");",,A,,
 Operators,Which operator is used for remainder in C?,+,%,/,*,,B,,
 Looping,Which loop checks its condition after each iteration?,while,do while,for,while do,,B,,
-Branch and Jumps,"Which of the following code snippets correctly demonstrates conditional branching with the use of if, else if, else, and the break statement in C?","int x = 5;
+Branching and Jumps,"Which of the following code snippets correctly demonstrates conditional branching with the use of if, else if, else, and the break statement in C?","int x = 5;
 if (x > 0) {
     printf(""Positive"");
 } else if (x == 0) {
@@ -50,7 +50,7 @@ swith (x > 0) {
 } else {
     continue;
 }",,C,,
-C?Functions,Which option correctly demonstrates a function with parameters in C?,"void greet() {
+Functions,Which option correctly demonstrates a function with parameters in C?,"void greet() {
     printf(""Hello!"");
 }","void greet(char name[]) {
     printf(""Hello, %s!"", name);
