@@ -1,5 +1,5 @@
 # src/main.py
-import os
+import os 
 import json
 import time
 import pandas as pd
@@ -12,7 +12,7 @@ from src.initial_test.test0 import init_test, init_chapter_test
 from src.utils.langchain_setup import LangChainService
 from src.teaching.cycle import Chapter_block
 
-
+# 到39行和之前一样
 def main():
     # Create log directory
     log_dir = create_log_directory()
@@ -36,7 +36,7 @@ def main():
         formal_intro = host.get_response("Now a student just gets in the C programing course, please tell him how powerful C is, and why learning C is a good start.")
         print(formal_intro)
         
-        # Initial test
+        # Initial test 存入不熟悉（答错）的章节名称
         basic_unfamiliar_list = init_test(file_path="ini_test.csv")
         
         # Initialize LangChain service
@@ -47,14 +47,14 @@ def main():
         df = pd.read_csv(CSV_FILE_PATH, encoding='utf-8-sig')
         retriever = langchain_service.create_retriever(data)
         
-        # Create teaching agents
+        # Create teaching agents 在外面创建agents，这样就能有所有的教学进度了
         tutor, quiz = create_agents(client, log_dir, teaching_style)
         # Process each chapter
         for chapter_name, chapter_df in df.groupby('Chapter', sort=False):
             print(f"\n{'='*20} Chapter: {chapter_name} {'='*20}")
             chapter_content = []
             
-            # Start creating the lecture
+            # Start creating the lecture 从这开始全变了， 第一个if如果章节名称在不熟悉的list里，就给他生成basic 的知识点
             if chapter_name in basic_unfamiliar_list: # Deliver basic course based on the inital test results
                 knowledge_points = chapter_df['Knowledge Point'].tolist()
                 chapter_info = {'Knowledge point': knowledge_points, 'basic_content': chapter_df['Basic Content'].tolist()}
@@ -63,13 +63,13 @@ def main():
                 print("\n📚 Chapter Syllabus:")
                 print(syllabus)
                 
-                # Start the basic level lecture
-                Chapter_block(chapter_df, 'basic', tutor, quiz, log_dir, main_log, retriever, knowledge_points)
+                # Start the basic level lecture 加了变量，输出格式没变，但现在会根据level生成课程了，这里是根据basic_unfamiliar_list生成课程
+                Chapter_block(chapter_df, level = 'basic', tutor, quiz, log_dir, main_log, retriever, knowledge_points) 
                 
             
-            else: # Deliver advanced course
-                advanced_need_list = init_chapter_test(chapter_name) # these knowledge points are going to be taught.
-                if advanced_need_df != []:
+            else: # Deliver advanced course 如果知识点不在basic_unfamiliar_list，就做chapter test
+                advanced_need_list = init_chapter_test(chapter_name) # these knowledge points are going to be taught. 然后根据chapter test，把章节内需要讲解的知识点存到了advanced_need_list
+                if advanced_need_df != []:# 如果没有需要讲解的直接跳过，去做chapter quiz
                     advanced_need_df = chapter_df[chapter_df['Knowledge Point'].isin(advanced_need_list)] # convert chapter_df to only include the knowledge points we want.
                     
                     chapter_info = {'Knowledge point': advanced_need_list, 'advanced_content': advanced_need_df['Advanced Content'].tolist()}
@@ -78,11 +78,11 @@ def main():
                     print("\n📚 Chapter Syllabus:")
                     print(syllabus)
                     
-                    # Start the lecture
-                    Chapter_block(chapter_df, 'advanced', tutor, quiz, log_dir, main_log, retriever, advanced_need_list)
+                    # Start the lecture 同理，根据advanced_need_list的knowledge point生成课程内容
+                    Chapter_block(chapter_df, level = 'advanced', tutor, quiz, log_dir, main_log, retriever, advanced_need_list)
                     
             
-            # Chapter coding quiz
+            # Chapter coding quiz 和之前一样的chapter quiz流程
             df = pd.read_csv('coding_standard.csv')
             coding_habit = df.to_string(index=False) # For coding standard
             
@@ -106,8 +106,8 @@ def main():
             print(f"\nCompleted Chapter: {chapter_name}\n")
             
             time.sleep(WAIT_TIME)
-            
-
+       #总结部分     
+# 这里开始又有变化， 总结历史记录，分别是课程内容，课程互动，quiz互动，然后全部传给host让他来做总结并推荐下一步学习
         course_summary = tutor.get_response("Summarize the course content covered so far, including chapters and knowledge points.")
         
         student_lecture_summary = tutor.get_response("Analyze the student's performance so far. Focus on their strengths, weaknesses, and overall progress.")
