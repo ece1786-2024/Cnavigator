@@ -4,7 +4,7 @@ C Introduction,Which of the following options correctly demonstrates the use of 
 printf(""Hello, C language"");","/* Output a message */
 printf(""Hello, C language!"")","// Display output
 printf(""Hello, C!"");",,A,,
-Data Type,"Which of the following options correctly declares variables with data types int, float, and char in C?","int age = 25;
+Data Types,"Which of the following options correctly declares variables with data types int, float, and char in C?","int age = 25;
 float height = 5.9;
 char grade = 'A';","integer age = 25;
 decimal height = 5.9;
