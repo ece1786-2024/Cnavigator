@@ -222,6 +222,43 @@ def display_chapter_syllabus(chapter_name, chapter_info, host):
         
         interface.launch(share=False, prevent_thread_lock=True)
 
+def display_course_conclusion(conclusion, host):
+    """Create and display course conclusion via Gradio"""
+    with gr.Blocks() as interface:
+        gr.Markdown("# 🎓 Course Completion")
+        gr.Markdown("### Your Learning Journey Summary")
+        
+        # Display the conclusion in a nicely formatted box
+        gr.Textbox(
+            value=conclusion,
+            label="Performance Summary & Recommendations",
+            interactive=False,
+            lines=10
+        )
+        
+        # Add a celebratory message
+        gr.Markdown("### 🎉 Congratulations on completing the course!")
+        gr.Markdown("Your dedication to learning C programming is commendable. Remember, this is just the beginning of your programming journey!")
+        
+        # Add a button for downloading the learning summary
+        # download_btn = gr.Button("📥 Download Learning Summary")
+        # status_text = gr.Textbox(label="Status", visible=True)
+        
+        def save_summary():
+            try:
+                timestamp = time.strftime("%Y%m%d-%H%M%S")
+                filename = f"c_course_summary_{timestamp}.txt"
+                
+                with open(filename, 'w', encoding='utf-8') as f:
+                    f.write("C Programming Course - Learning Summary\n")
+                    f.write("=====================================\n\n")
+                    f.write(conclusion)
+                
+                return f"Summary saved as {filename}"
+            except Exception as e:
+                return f"Error saving summary: {str(e)}"
+        
+        interface.launch(share=False, prevent_thread_lock=True)
 
 def main():
     project_root = os.path.dirname(os.path.abspath(__file__))
@@ -344,6 +381,7 @@ def main():
         # Ending
         conclusion = host.get_response("Now that we have reached the end of this course, could you please provide a summary of the student's performance based on the conversation history? Additionally, suggest what they can do next to continue improving their skills in C programming.")
         print(conclusion)
+        display_course_conclusion(conclusion, host)
                         
     except Exception as e:
         error_msg = f"Error in teaching session: {str(e)}"
