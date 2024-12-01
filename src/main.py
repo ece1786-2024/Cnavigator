@@ -313,7 +313,7 @@ def main():
                 # Chapter Quiz
                 chapter_content = {
                     'chapter': chapter_name,
-                    'basic_content': chapter_df['Basic Content'].tolist(),
+                    # 'basic_content': chapter_df['Basic Content'].tolist(),
                     'advanced_content': chapter_df['Advanced Content'].tolist()
                 }
                 
