@@ -8,7 +8,7 @@ project_root = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(project_root)
 sys.path.append(os.path.join(project_root, 'src'))
 
-from src.main import main
+from src.main_ver2 import main
 
 if __name__ == "__main__":
     main()
